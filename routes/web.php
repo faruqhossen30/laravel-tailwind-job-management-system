@@ -39,7 +39,7 @@ Route::get('/test', function () {
     return view('test');
 });
 
-
+Route::get('/',[HomepageController::class,'Homepage'])->name('homepage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

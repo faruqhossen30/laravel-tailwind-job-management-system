@@ -1,150 +1,90 @@
-@php
-    use App\Models\Review\Review;
-    $reviews = Review::where('status', true)->count();
-@endphp
+<div class="hidden px-5 mx-auto border-gray-200 container-fluid lg:px-24 bg-gray-50 md:block dark:bg-neutral-600">
+    <div class="grid items-center grid-cols-12">
+        <div class="col-span-7">
+            <ul class="flex items-center py-3">
+                <li class="ltr:mr-4 rtl:ml-4">
+                    <p class="mb-0 text-gray-800 text-13 dark:text-gray-50"> <i class="mdi mdi-map-marker"></i> Your Location: <a href="javascript:void(0)" class="font-medium">New Caledonia</a></p>
+                </li>
+                <li>
+                    <ul class="flex flex-wrap gap-4 text-gray-800 ">
+                        <li class="transition-all duration-200 ease-in hover:text-green-500 dark:text-gray-50 dark:hover:text-green-500"><a href="javascript:void(0)" class="social-link"><i class="uil uil-whatsapp"></i></a></li>
+                        <li class="transition-all duration-200 ease-in hover:text-green-500 dark:text-gray-50 dark:hover:text-green-500"><a href="javascript:void(0)" class="social-link"><i class="uil uil-facebook-messenger-alt"></i></a></li>
+                        <li class="transition-all duration-200 ease-in hover:text-green-500 dark:text-gray-50 dark:hover:text-green-500"><a href="javascript:void(0)" class="social-link"><i class="uil uil-instagram"></i></a></li>
+                        <li class="transition-all duration-200 ease-in hover:text-green-500 dark:text-gray-50 dark:hover:text-green-500"><a href="javascript:void(0)" class="social-link"><i class="uil uil-envelope"></i></a></li>
+                        <li class="transition-all duration-200 ease-in hover:text-green-500 dark:text-gray-50 dark:hover:text-green-500"><a href="javascript:void(0)" class="social-link"><i class="uil uil-twitter-alt"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="col-span-5 ltr:ml-auto rtl:mr-auto">
+            <ul class="flex items-center gap-4">
+                <li>
+                    <a href="#signupModal" class="py-3 font-medium text-gray-800 text-13 dark:text-gray-50" data-tw-toggle="modal" data-tw-target="#modal-id_form"><i class="uil uil-lock ltr:mr-1 rtl:ml-1"></i>Sign Up</a>
 
-<header class="sticky top-0 bg-white mynavbar z-50">
-    <div class="container mx-auto flex items-center justify-between lg:py-2 py-2 px-3 lg:px-0">
-        <div class="flex items-center space-x-6 ">
-            <a href="{{ route('homepage') }}" class="flex-none text-xl font-semibold dark:text-white">
-
-                {{-- <div class="relative">
-                    <img class="w-12 h-12 lg:w-14 lg:h-14 rounded-full hover:ring-2 hover:ring-green-400" src="{{asset('logo.jpg')}}" alt="">
-                    <span class="bottom-0 left-9 lg:left-10 absolute w-3.5 h-3.5 lg:w-4 lg:h-4 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                </div> --}}
-                <div class="relative">
-                    <img class="w-12 h-12 lg:w-14 lg:h-14 rounded-full hover:ring-2 hover:ring-green-400" src="{{asset('logo.jpg')}}" alt="">
-                    <span class="relative flex h-3 w-3 bottom-2.5 lg:bottom-3 left-9 lg:left-10">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2.5 lg:h-3 w-2.5 lg:w-3 bg-green-400"></span>
-                    </span>
-                </div>
-
-
-                {{-- <img src="{{ asset('img/logo.webp') }}" alt="" class="w-12 lg:w-14 h-12 lg:h-14 hover:animate-pulse ring-2 lg:ring-0 ring-cyan-500 rounded-full lg:rounded-none hover:ring-1 hover:ring-brand  hover:rounded-full"> --}}
-            </a>
-            <div class="space-y-2">
-                <div class="flex items-center space-x-2">
-                    <a href="{{ route('aboutpage') }}" class="sm:text-lg text-xl md:text-[22px] lg:text-2xl font-bold hover:text-brand">
-                        Monodeep Samanta
-                    </a>
-                    <div class="hidden lg:flex items-center space-x-2">
-                        <button type="button"
-                            class="py-1 group group-hover:text-green-400 px-2 inline-flex items-center gap-x-1 font-bold rounded-md border border-gray-200 bg-[#222325] text-white disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 group-hover:text-green-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                              </svg>
-
-                            <span class="text-[12px] leading-[12px] py-[2px] group-hover:text-green-400">PRO VERIFIED</span>
-                        </button>
-                        <div class="flex space-x-1 group">
-                            <a href="{{route('reviewpage')}}" class=" group-hover:text-yellow-400">
-                                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                </svg>
-                            </a>
-                            <a href="{{route('reviewpage')}}" class=" group-hover:text-yellow-400">
-                                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                </svg>
-                            </a>
-                            <a href="{{route('reviewpage')}}" class=" group-hover:text-yellow-400">
-                                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                </svg>
-                            </a>
-                            <a href="{{route('reviewpage')}}" class=" group-hover:text-yellow-400">
-                                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                </svg>
-                            </a>
-                            <a href="{{route('reviewpage')}}" class=" group-hover:text-yellow-400">
-                                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="{{route('reviewpage')}}" class="text-base leading-[14px] font-medium text-black hover:text-brand">5.0
-                                ({{ $reviews }}
-                                reviews)
-                            </a>
+                    <div class="relative z-50 hidden modal" id="modal-id_form" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                        <div class="fixed top-0 bottom-0 left-0 right-0 z-50 overflow-hidden">
+                            <div class="absolute inset-0 transition-opacity bg-black bg-opacity-60 modal-overlay"></div>
+                            <div class="box-content p-4 mx-auto animate-translate sm:max-w-lg">
+                                <div class="relative overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl top-36 dark:bg-neutral-800">
+                                    <div class="p-12 bg-white dark:bg-neutral-800">
+                                        <div class="mb-4 text-center">
+                                            <h5 class="mb-1 text-gray-800 dark:text-gray-50">Sign Up</h5>
+                                            <p class="text-gray-500 dark:text-gray-300">Sign Up and get access to all the features of Jobcy</p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="usernameInput" class="block text-gray-900 dark:text-gray-50 ltr:text-left rtl:text-right">Username</label>
+                                            <input type="text" class="w-full mt-2 border-gray-100 rounded placeholder:text-13 placeholder:text-gray-200 focus:ring-1 focus:ring-violet-500 dark:bg-transparent dark:text-gray-50 dark:border-neutral-600" id="usernameInput" placeholder="Enter your username">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="emailInput" class="block text-gray-900 dark:text-gray-50 ltr:text-left rtl:text-right">Email</label>
+                                            <input type="email" class="w-full mt-2 border-gray-100 rounded placeholder:text-13 placeholder:text-gray-200 focus:ring-1 focus:ring-violet-500 dark:bg-transparent dark:text-gray-50 dark:border-neutral-600" id="usernameInput" placeholder="Enter your email">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="passwordInput" class="block text-gray-900 dark:text-gray-50 ltr:text-left rtl:text-right">Password</label>
+                                            <input type="password" class="w-full mt-2 border-gray-100 rounded placeholder:text-13 placeholder:text-gray-200 focus:ring-1 focus:ring-violet-500 dark:bg-transparent dark:text-gray-50 dark:border-neutral-600" id="usernameInput" placeholder="Enter your password">
+                                        </div>
+                                        <div class="mb-3 ltr:float-left rtl:float-right">
+                                            <a href="#!">
+                                                <input class="mr-1 align-middle rounded cursor-pointer group-data-[theme-color=violet]:checked:bg-violet-500 group-data-[theme-color=sky]:checked:bg-sky-500 group-data-[theme-color=red]:checked:bg-red-500 group-data-[theme-color=green]:checked:bg-green-500 group-data-[theme-color=pink]:checked:bg-pink-500 group-data-[theme-color=blue]:checked:bg-blue-500 checked:ring-0 checked:ring-offset-0 focus:ring-0 focus:ring-offset-0 dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-violet-500/20" type="checkbox" id="flexCheckDefault">
+                                                <label class="dark:text-gray-50" for="flexCheckDefault">I agree to the <a href="javascript:void(0)" class="underline group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500">Terms and conditions</a></label>
+                                            </a>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="w-full mt-4 text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500">Sign Up</button>
+                                        </div>
+                                        <div class="mt-4 text-center">
+                                            <p class="mb-0 text-gray-800 dark:text-gray-300">Already a member ? <a href="sign-in.html" class="font-medium underline group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"> Sign-in </a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-                <h1 class="hidden lg:block text-sm text-black font-medium leading-[24px]">Multi Award Winning United
-                    Kingdom Designer </h1>
-            </div>
-        </div>
-        <div class="">
-            @include('inc.topmenuoffcancas')
-            <div class="space-x-3 hidden lg:flex">
-                <button type="button" onclick="tidioChatApi.display(true);tidioChatApi.open()"
-                    class="chat-button group bg-brand py-2 px-3 inline-flex items-center gap-x-2 text-md font-bold rounded-sm bg-primary text-white hover:bg-black disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-send-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
-                    </svg>
-                    Instant Reply
-                </button>
-                <a href="{{ route('aboutpage') }}"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-md font-bold rounded-sm border border-black bg-white hover:bg-black text-black hover:text-white disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                    More About Me
-                </a>
-            </div>
-            <div class="hidden md:flex items-center justify-end space-y-1 space-x-1">
-                <svg class="text-brand w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                </svg>
-                <span class="text-sm py-1">Average response time 1h</span>
-            </div>
+                </li>
+                <li>
+                    <div class="relative hidden dropdown language sm:block">
+                        <button class="px-4 py-3 border-0 btn dropdown-toggle" type="button" aria-expanded="false" data-dropdown-toggle="navNotifications">
+                            <img src="{{asset('assets/images/flags/us.jpg')}}" alt="" class="h-4" id="header-lang-img">
+                        </button>
+                        <div class="absolute top-auto z-50 hidden w-40 list-none bg-white rounded shadow dropdown-menu -left-20 dark:bg-neutral-700" id="navNotifications">
+                            <ul class="border border-gray-50 dark:border-gray-700" aria-labelledby="navNotifications">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/us.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">English</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/spain.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">Spanish</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/germany.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">German</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/italy.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">Italian</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-</header>
-
-{{-- sticky top-24 z-50 --}}
-
-<section id="mymunebar" class=" hidden md:block  bg-white border-b px-4 2xlg:px-0 transition-all">
-    <nav class="bg-white flex space-x-6 text-gray-400 container mx-auto">
-        <a href="{{ route('homepage') }}"
-            class="@if (request()->routeIs('homepage')) border-b-2 border-b-[#FF003A] text-brand @endif inline-flex items-center gap-x-2 text-lg leading-[21px] whitespace-nowrap  focus:outline-none dark:text-blue-500 dark:focus:text-blue-400 menuhover pb-2 hover:text-brand">
-            Home
-        </a>
-
-        <a href="{{ route('portfoliopage') }}"
-            class="@if (request()->routeIs(['portfoliopage', 'singleportfolio', 'portfoliocategorypage'])) border-b-2 border-b-[#FF003A] text-brand @endif inline-flex items-center gap-x-2 text-lg leading-[21px] whitespace-nowrap  focus:outline-none dark:text-blue-500 dark:focus:text-blue-400 menuhover pb-2 hover:text-brand">
-            Portfolio
-        </a>
-        <a href="{{ route('aboutpage') }}"
-            class="@if (request()->routeIs('aboutpage')) border-b-2 border-b-[#FF003A] text-brand @endif inline-flex items-center gap-x-2 text-lg leading-[21px] whitespace-nowrap focus:outline-none dark:text-blue-500 dark:focus:text-blue-400 menuhover pb-2 hover:text-brand">
-            About Me
-        </a>
-        <a href="{{ route('servicepage') }}"
-            class="@if (request()->routeIs(['servicepage', 'singleservice'])) border-b-2 border-b-[#FF003A] text-brand @endif inline-flex items-center gap-x-2 text-lg leading-[21px] whitespace-nowrap focus:outline-none dark:text-blue-500 dark:focus:text-blue-400 menuhover pb-2 hover:text-brand">
-            Services
-        </a>
-        <a href="{{ route('reviewpage') }}"
-            class="@if (request()->routeIs('reviewpage')) border-b-2 border-b-[#FF003A] text-brand @endif inline-flex items-center gap-x-2 text-lg leading-[21px] whitespace-nowrap focus:outline-none dark:text-blue-500 dark:focus:text-blue-400 menuhover pb-2 hover:text-brand">
-            Reviews
-        </a>
-        <a href="{{ route('blogpage') }}"
-            class="@if (request()->routeIs(['blogpage', 'postpage', 'singlepost', 'singleblog'])) border-b-2 border-b-[#FF003A] text-brand @endif inline-flex items-center gap-x-2 text-lg leading-[21px] whitespace-nowrap focus:outline-none dark:text-blue-500 dark:focus:text-blue-400 menuhover pb-2 hover:text-brand">
-            Blog
-        </a>
-
-    </nav>
-</section>
+</div>
