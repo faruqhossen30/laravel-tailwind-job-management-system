@@ -10,6 +10,7 @@ use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\ContuctController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\JobListController;
 use App\Http\Controllers\PortfoliopageController;
 use App\Http\Controllers\PricepageController;
 use App\Http\Controllers\ProfileController;
@@ -40,6 +41,9 @@ Route::get('/test', function () {
 });
 
 Route::get('/',[HomepageController::class,'Homepage'])->name('homepage');
+Route::get('/circulars',[JobListController::class,'Joblistpage'])->name('job.circulars');
+Route::get('/blogs',[BlogpageController::class,'blogPage'])->name('blog.page');
+Route::get('/blog-details',[BlogpageController::class,'singleBlog'])->name('single.blog.page');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

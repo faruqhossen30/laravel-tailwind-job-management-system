@@ -2,7 +2,7 @@
 id="navbar">
 <div class="mx-auto container-fluid">
     <div class="flex flex-wrap items-center justify-between mx-auto">
-        <a href="index.html" class="flex items-center">
+        <a href="{{route('homepage')}}" class="flex items-center">
             <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" class="logo-dark h-[22px] block dark:hidden">
             <img src="{{ asset('assets/images/logo-light.png') }}" alt="" class="logo-dark h-[22px] hidden dark:block">
         </a>
@@ -209,7 +209,7 @@ id="navbar">
                                 <ul class="relative top-auto z-50 py-2 list-none dark:bg-neutral-800" aria-labelledby="pages">
                                     <span class="block px-4 py-3 font-normal text-gray-500 uppercase text-13">Jobs</span>
                                     <li><a class="block w-full px-4 py-2 text-13 font-medium text-gray-900 duration-300 bg-transparent dropdown-item whitespace-nowrap hover:translate-x-1.5 group-data-[theme-color=violet]:hover:text-violet-500 group-data-[theme-color=sky]:hover:text-sky-500 group-data-[theme-color=red]:hover:text-red-500 group-data-[theme-color=green]:hover:text-green-500 group-data-[theme-color=pink]:hover:text-pink-500 group-data-[theme-color=blue]:hover:text-blue-500 uppercase group-data-[mode=dark]:text-gray-50"
-                                            href="job-list.html">Job List</a>
+                                            href="{{route('job.circulars')}}">Job List</a>
                                     </li>
                                     <li><a class="block w-full px-4 py-2 text-13 font-medium text-gray-900 duration-300 bg-transparent dropdown-item whitespace-nowrap hover:translate-x-1.5 group-data-[theme-color=violet]:hover:text-violet-500 group-data-[theme-color=sky]:hover:text-sky-500 group-data-[theme-color=red]:hover:text-red-500 group-data-[theme-color=green]:hover:text-green-500 group-data-[theme-color=pink]:hover:text-pink-500 group-data-[theme-color=blue]:hover:text-blue-500 uppercase group-data-[mode=dark]:text-gray-50"
                                             href="job-list-2.html">Job List-2</a>
@@ -279,7 +279,7 @@ id="navbar">
                         </div>
                     </div>
                 </li>
-                <li class="relative dropdown lg:mt-0">
+                {{-- <li class="relative dropdown lg:mt-0">
                     <button href="#" class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]"id="blog" data-bs-toggle="dropdown">Blog <i
                             class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
 
@@ -305,6 +305,10 @@ id="navbar">
                                 href="blog-author.html">Blog Author</a>
                         </li>
                     </ul>
+                </li> --}}
+                <li class="py-5 lg:px-4">
+                    <a href="{{route('blog.page')}}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Blog
+                    </a>
                 </li>
                 <li class="py-5 lg:px-4">
                     <a href="contact.html" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Contact
