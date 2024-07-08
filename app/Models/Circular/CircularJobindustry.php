@@ -6,7 +6,7 @@ use App\Models\Attributes\JobIndustry;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CircularJobindustry extends Model
+class CircularJobIndustry extends Model
 {
     use HasFactory;
     protected $fillable = ['circular_id', 'job_industry_id'];

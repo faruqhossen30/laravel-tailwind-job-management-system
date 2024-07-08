@@ -15,10 +15,11 @@ use App\Models\Circular\Circular;
 use App\Models\Circular\CircularCareerlabel;
 use App\Models\Circular\CircularCategory;
 use App\Models\Circular\CircularEducation;
-use App\Models\Circular\CircularJobindustry;
+use App\Models\Circular\CircularJobIndustry;
 use App\Models\Circular\CircularJobtype;
 use App\Models\Circular\CircularSalaryperiod;
 use App\Models\Circular\CircularSkill;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,9 +49,9 @@ class CircularController extends Controller
         $careerlabels  = CareerLevel::get();
         $salarypreiods = SalaryPeriod::get();
         $jobtypes      = JobTypes::get();
-        // $companies = Company::get();
+        $company       = Company::get();
 
-        return view('admin.circular.create', compact('categories', 'educations', 'skills', 'jobindustries', 'careerlabels', 'salarypreiods', 'jobtypes'));
+        return view('admin.circular.create', compact('company','categories', 'educations', 'skills', 'jobindustries', 'careerlabels', 'salarypreiods', 'jobtypes'));
     }
 
     /**
@@ -70,6 +71,7 @@ class CircularController extends Controller
             'slug'                 => $request->title,
             'description'          => $request->description,
             'user_id'              => Auth::user()->id,
+            'company_id'           => $request->company_id,
             'category_id'          => $request->category_id,
             'start_date'           => $request->start_date,
             'end_date'             => $request->end_date,
@@ -110,7 +112,7 @@ class CircularController extends Controller
             // job_industry
             if (!empty($request->job_industry)) {
                 foreach ($request->job_industry as $job_industry) {
-                    CircularJobindustry::create([
+                    CircularJobIndustry::create([
                         'circular_id' => $circular->id,
                         'job_industry_id' => $job_industry
                     ]);
@@ -144,14 +146,14 @@ class CircularController extends Controller
                 }
             }
             // circular category
-            if (!empty($request->category_ids)) {
-                foreach ($request->category_ids as $categoryid) {
-                    CircularCategory::create([
-                        'circular_id' => $circular->id,
-                        'category_id' => $categoryid
-                    ]);
-                }
-            }
+            // if (!empty($request->category_ids)) {
+            //     foreach ($request->category_ids as $categoryid) {
+            //         CircularCategory::create([
+            //             'circular_id' => $circular->id,
+            //             'category_id' => $categoryid
+            //         ]);
+            //     }
+            // }
         }
 
         $user = Auth::user();
@@ -178,8 +180,8 @@ class CircularController extends Controller
      */
     public function edit(string $id)
     {
-        $circular = Circular::with('skills', 'categories', 'jobindustries', 'careerlabels', 'jobtypes', 'salaryperiods')->firstWhere('id', $id);
-        $categories = Category::get();
+        $circular = Circular::with('skills',  'jobindustries', 'careerlabels', 'jobtypes', 'salaryperiods')->firstWhere('id', $id);
+        $categories    = Category::get();
         $educations    = Education::get();
         $skills        = Skill::get();
         $jobindustries = Jobindustry::get();
@@ -187,8 +189,9 @@ class CircularController extends Controller
         $salarypreiods = SalaryPeriod::get();
         $jobtypes      = JobTypes::get();
         $salaryperiods = SalaryPeriod::get();
+        $company       = Company::get();
         // return $circular->categories;
-        return view('admin.circular.edit', compact('circular', 'educations', 'skills', 'categories', 'jobindustries', 'careerlabels', 'salarypreiods', 'jobtypes', 'salaryperiods'));
+        return view('admin.circular.edit', compact('company','circular', 'educations', 'skills' ,'categories', 'jobindustries', 'careerlabels', 'salarypreiods', 'jobtypes', 'salaryperiods'));
     }
 
     /**
@@ -205,6 +208,8 @@ class CircularController extends Controller
             'slug'                 => $request->title,
             'description'          => $request->description,
             'user_id'              => Auth::user()->id,
+            'category_id'          => $request->category_id,
+            'company_id'           => $request->company_id,
             'start_date'           => $request->start_date,
             'end_date'             => $request->end_date,
             'min_salary'           => $request->min_salary,
@@ -248,9 +253,9 @@ class CircularController extends Controller
             }
             // job_industry
             if (!empty($request->job_industry)) {
-                CircularJobindustry::where('circular_id', $id)->delete();
+                CircularJobIndustry::where('circular_id', $id)->delete();
                 foreach ($request->job_industry as $job_industry) {
-                    CircularJobindustry::create([
+                    CircularJobIndustry::create([
                         'circular_id' => $id,
                         'job_industry_id' => $job_industry
                     ]);
@@ -287,15 +292,15 @@ class CircularController extends Controller
                 }
             }
 
-            if (!empty($request->category_ids)) {
-                CircularCategory::where('circular_id', $id)->delete();
-                foreach ($request->category_ids as $categoryid) {
-                    CircularCategory::create([
-                        'circular_id' => $id,
-                        'category_id' => $categoryid
-                    ]);
-                }
-            }
+            // if (!empty($request->category_ids)) {
+            //     CircularCategory::where('circular_id', $id)->delete();
+            //     foreach ($request->category_ids as $categoryid) {
+            //         CircularCategory::create([
+            //             'circular_id' => $id,
+            //             'category_id' => $categoryid
+            //         ]);
+            //     }
+            // }
         }
 
 

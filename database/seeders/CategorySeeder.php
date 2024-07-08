@@ -17,19 +17,12 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-
         $categories = array(
-            array('name' => 'Apps', 'slug' => 'apps', 'author_id' => '1'),
-            array('name' => 'Dashboard', 'slug' => 'dashboard', 'author_id' => '1'),
-            array('name' => 'Landing Page', 'slug' => 'landing-page', 'author_id' => '1'),
-            array('name' => 'Website', 'slug' => 'website', 'author_id' => '1')
+            array('name' => 'Govt Job', 'slug' => 'govt-job', 'author_id' => '1'),
+            array('name' => 'IT Job', 'slug' => 'IT-job', 'author_id' => '1'),
+            array('name' => 'Comapny Job', 'slug' => 'comapny-job', 'author_id' => '1'),
+            array('name' => 'Bank Job', 'slug' => 'bank-job', 'author_id' => '1')
         );
-
-
-
-
         Category::insert($categories);
-
-
     }
 }

@@ -16,6 +16,7 @@ class Blog extends Model
         'short_description',
         'description',
         'thumbnail',
+        'category_id',
         'user_id',
         'meta_title',
         'meta_description',

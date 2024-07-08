@@ -8,7 +8,7 @@
     <meta content="Tailwind Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="Themesbrand" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    @yield('OG')
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
 

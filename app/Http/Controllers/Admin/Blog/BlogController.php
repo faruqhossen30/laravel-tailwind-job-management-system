@@ -35,7 +35,7 @@ class BlogController extends Controller
         if(!Auth::user()->can('blog create')){
             abort(403);
         }
-        $categories = Category::get();
+        $categories = Category::where('type','blog')->get();
 
         return view('admin.blog.blog.create', compact('categories'));
     }
@@ -115,7 +115,7 @@ class BlogController extends Controller
             abort(403);
         }
         $blog = Blog::with('categories')->firstWhere('id', $id);
-        $categories = Category::get();
+        $categories = Category::where('type','blog')->get();
 
         $cat_ids = $blog->categories->pluck('id')->toArray();
 

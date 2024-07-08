@@ -29,7 +29,6 @@ return new class extends Migration
               $table->unsignedBigInteger('ownership_type')->nullable();
               $table->unsignedBigInteger('division_id')->nullable();
               $table->unsignedBigInteger('district_id')->nullable();
-              $table->json('industry')->nullable();
               $table->integer('total_office')->nullable();
               $table->integer('employ_range')->nullable();
               $table->dateTime('establish')->nullable();

@@ -202,21 +202,27 @@
                             <div class="swiper blogdetailSlider">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="assets/images/blog/img-11.jpg" alt="" class="rounded-lg">
+                                        @if ($blog->thumbnail)
+                                        <img src="{{asset('storage/'.$blog->thumbnail)}}" alt="" class="rounded-lg">
+                                        @else
+                                        <img src="{{asset('assets/images/blog/img-11.jpg')}}" alt="photo" class="rounded-lg">
+                                        @endif
+
+                                    </div>
+                                    {{-- <div class="swiper-slide">
+                                        <img src="{{asset('assets/images/blog/img-14.jpg')}}" alt="" class="rounded-lg">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="assets/images/blog/img-14.jpg" alt="" class="rounded-lg">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/images/blog/img-15.jpg" alt="" class="rounded-lg">
-                                    </div>
+                                        <img src="{{asset('assets/images/blog/img-15.jpgs')}}" alt="" class="rounded-lg">
+                                    </div> --}}
                                 </div>
                             </div>
                             <ul class="flex flex-wrap items-center mt-3 mb-0 text-gray-500">
                                 <li>
                                     <div class="flex items-center">
                                         <div class="shrink-0">
-                                            <img src="assets/images/user/img-03.jpg" alt="" class="w-12 h-12 rounded-full">
+                                            {{$blog->id}}
+                                            <img src="{{asset('storage/'.$blog->thumbnail)}}" alt="" class="w-12 h-12 rounded-full">
                                         </div>
                                         <div class="ltr:ml-3 rtl:mr-3">
                                             <a href="blog-author.html" class="text-gray-900 dark:text-white">
@@ -231,7 +237,7 @@
                                             <i class="uil uil-calendar-alt"></i>
                                         </div>
                                         <div class="ltr:ml-2 rtl:mr-2">
-                                            <p class="mb-0 dark:text-gray-300"> Aug 02, 2021</p>
+                                            <p class="mb-0 dark:text-gray-300">{{ Carbon\Carbon::parse($blog->created_at)->format('d M Y') }}</p>
                                         </div>
                                     </div>
                                 </li>
@@ -247,11 +253,9 @@
                                 </li>
                             </ul>
                             <div class="mt-4">
-                                <h5 class="mb-2 text-gray-900 dark:text-gray-50">What makes the best co-working space?</h5>
-                                <p class="text-gray-500 dark:text-gray-300">Objectively pursue diverse catalysts for change for interoperable meta-services. Distinctively re-engineer
-                                    revolutionary meta-services and premium architectures. Intrinsically incubate intuitive opportunities and real-time potentialities. Appropriately
-                                    communicate one-to-one technology.</p>
-                                <p class="mb-4 text-gray-500 dark:text-gray-300">Home renovations, especially those involving plentiful of demolition can be a very dusty affair. The
+                                <h5 class="mb-2 text-gray-900 dark:text-gray-50">{{$blog->title}}</h5>
+                                <p class="text-gray-500 dark:text-gray-300">{{$blog->description}}</p>
+                                {{-- <p class="mb-4 text-gray-500 dark:text-gray-300">Home renovations, especially those involving plentiful of demolition can be a very dusty affair. The
                                     same is true as we experience the emotional sensation of stress from our first instances of social rejection ridicule. We quickly learn to fear and
                                     thus automatically avoid potentially stressful situations of all kinds, including the most common of all making mistakes.</p>
                                 <figure class="text-center blog-blockquote">
@@ -269,7 +273,7 @@
                                     evening believe but proceed pretend mrs. At missed advice my it no sister. Miss told ham dull knew see she spot near can. Spirit her entire her
                                     called.</p>
                                 <p class="text-gray-500 dark:text-gray-300">The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not
-                                    attract attention to itself or distract the viewer's attention from the layout.</p>
+                                    attract attention to itself or distract the viewer's attention from the layout.</p> --}}
                                 <div class="flex items-center my-4">
                                     <div class="shrink-0">
                                         <b class="text-gray-900 dark:text-gray-50">Tags:</b>
@@ -306,7 +310,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <h5 class="pb-3 mt-8 text-gray-900 border-b border-gray-100/50 dark:text-gray-50 dark:border-zinc-700">Comments</h5>
+                                {{-- <h5 class="pb-3 mt-8 text-gray-900 border-b border-gray-100/50 dark:text-gray-50 dark:border-zinc-700">Comments</h5>
                                 <div class="mt-8">
                                     <div class="flex align-top">
                                         <div class="shrink-0">
@@ -412,9 +416,9 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="mt-8">
+                            {{-- <div class="mt-8">
                                 <h5 class="pb-3 text-gray-900 border-b border-gray-100/50 dark:text-gray-50 dark:border-zinc-700">Related Blog Posts</h5>
                                 <div class="pb-5 mt-8 swiper blogSlider">
                                     <div class="pb-8 swiper-wrapper">
@@ -460,7 +464,7 @@
                                     </div>
                                     <div class="swiper-pagination"></div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-span-12 lg:col-span-4">
                             <form class="relative">
@@ -647,7 +651,6 @@
                 </div>
             </section>
             <!-- End grid -->
-
         </div>
     </div>
 @endsection

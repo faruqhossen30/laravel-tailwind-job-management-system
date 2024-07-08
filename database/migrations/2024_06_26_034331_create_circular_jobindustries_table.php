@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('circular_jobindustries', function (Blueprint $table) {
+        Schema::create('circular_job_industries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('circular_id')->constrained('circulars')->onDelete('cascade');
             $table->unsignedBigInteger('job_industry_id');

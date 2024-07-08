@@ -49,6 +49,7 @@ class CategoryController extends Controller
 
         $data=[
             'name'      => $request->name,
+            'type'      => $request->type,
             'slug'      => Str ::slug($request->name),
             'author_id' => Auth::user()->id,
             // 'thumbnail' => $request->thumbnail,
@@ -91,8 +92,11 @@ class CategoryController extends Controller
         if(!Auth::user()->can('category update')){
             abort(403);
         }
+
+
         $data = [
             'name'      => $request->name,
+            'type'      => $request->type,
             'slug'      => Str::slug($request->name),
             'author_id' => Auth::user()->id,
             // 'thumbnail' => $request->thumbnail,

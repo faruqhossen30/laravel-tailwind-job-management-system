@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('thumbnail')->nullable();
             $table->string('author_id');
+            $table->enum('type', ['blog', 'circular'])->default('blog')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

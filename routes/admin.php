@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\Setting\SocialmediaSettingController;
 use App\Http\Controllers\Admin\Setting\WebsiteSettingController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\ContactController;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('role', RoleController::class);
@@ -32,7 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::resource('role', RoleController::class);
     // Start Work
 
-
+    route::get('/contact',[ContactController::class,'create'])->name('contact');
+    route::post('/contact/send',[ContactController::class,'send'])->name('contact.send');
 
     //Attributes
     Route::resource('careerlavel',   CareerlavelController::class);

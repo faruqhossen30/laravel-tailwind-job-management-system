@@ -1,6 +1,6 @@
 @php
     use App\Models\Blog;
-    $blogs = Blog::latest()->get();
+    $blogs = Blog::take(3)->latest()->get();
 @endphp
 
 <section class="py-20 bg-gray-50 dark:bg-neutral-700">
@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="grid grid-cols-12 gap-5">
+            @foreach ($blogs as $blog)
             <div class="col-span-12 md:col-span-6 lg:col-span-4">
 
-                @foreach ($blogs as $blog)
                     <div class="p-2 mt-3 transition-all duration-500 bg-white rounded shadow-lg shadow-gray-100/50 card dark:bg-neutral-800 dark:shadow-neutral-600/20 group/blog">
                         <div class="relative overflow-hidden">
                             <img src="{{ asset('storage/'.$blog->thumbnail) }}" alt="" class="rounded">
@@ -45,8 +45,8 @@
                                 more <i class="align-middle mdi mdi-chevron-right"></i></a>
                         </div>
                     </div>
+                </div>
                 @endforeach
-            </div>
 
         </div>
     </div>

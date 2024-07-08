@@ -153,7 +153,7 @@ id="navbar">
 
         <div id="navbar-collapse" class="navbar-res items-center justify-between w-full text-sm lg:flex lg:w-auto lg:order-1 group-focus:[.navbar-toggler]:block hidden">
             <ul class="flex flex-col items-start mt-5 mb-10 font-medium lg:mt-0 lg:mb-0 lg:items-center lg:flex-row" id="navigation-menu">
-                <li class="relative dropdown">
+                {{-- <li class="relative dropdown">
                     <button class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]" id="home" data-bs-toggle="dropdown">Home <i
                             class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
 
@@ -172,8 +172,13 @@ id="navbar">
                                 href="index-3.html">Home 3</a>
                         </li>
                     </ul>
+                </li> --}}
+
+                <li class="py-5 lg:px-4">
+                    <a href="{{route('homepage')}}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Home
+                    </a>
                 </li>
-                <li class="relative dropdown lg:mt-0">
+                {{-- <li class="relative dropdown lg:mt-0">
                     <button class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]" id="company" data-bs-toggle="dropdown">Company <i
                             class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
 
@@ -198,8 +203,12 @@ id="navbar">
                                 href="faqs.html">Faqs</a>
                         </li>
                     </ul>
+                </li> --}}
+                <li class="py-5 lg:px-4">
+                    <a href="{{route('job.circulars')}}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Circular
+                    </a>
                 </li>
-                <li class="relative dropdown lg:mt-0">
+                {{-- <li class="relative dropdown lg:mt-0">
                     <button href="#" class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]"id="pages" data-bs-toggle="dropdown">Pages <i
                             class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
                     <div
@@ -278,7 +287,7 @@ id="navbar">
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 {{-- <li class="relative dropdown lg:mt-0">
                     <button href="#" class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]"id="blog" data-bs-toggle="dropdown">Blog <i
                             class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
@@ -311,7 +320,7 @@ id="navbar">
                     </a>
                 </li>
                 <li class="py-5 lg:px-4">
-                    <a href="contact.html" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Contact
+                    <a href="{{route('contact.page')}}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Contact
                     </a>
                 </li>
             </ul>

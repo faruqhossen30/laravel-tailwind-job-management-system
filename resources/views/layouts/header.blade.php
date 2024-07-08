@@ -1,4 +1,4 @@
-<div class="hidden px-5 mx-auto border-gray-200 container-fluid lg:px-24 bg-gray-50 md:block dark:bg-neutral-600">
+<div class="hidden px-5 mx-auto border-gray-200 container-fluid lg:px-24 z-50 bg-gray-50 md:block dark:bg-neutral-600">
     <div class="grid items-center grid-cols-12">
         <div class="col-span-7">
             <ul class="flex items-center py-3">
