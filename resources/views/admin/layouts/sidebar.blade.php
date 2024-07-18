@@ -44,8 +44,8 @@
                     </li>
                     <!-------Dashboard End------------->
                     <!-------------Admin Start--------->
-                    @canany(['admin list', ' admin create', ' admin update', ' admin delete', 'admin show', 'role list',
-                        'role create', 'role update', 'role delete', 'role show'])
+                    {{-- @canany(['admin list', ' admin create', ' admin update', ' admin delete', 'admin show', 'role list',
+                        'role create', 'role update', 'role delete', 'role show']) --}}
                         <li>
                             <button type="button"
                                 class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
@@ -79,11 +79,11 @@
                                 </li>
                             </ul>
                         </li>
-                    @endcanany
+                    {{-- @endcanany --}}
                     <!-------------Admin End----------->
 
                     <!-----------Blog start------------>
-                    @canany(['blog list', 'software list'])
+                    {{-- @canany(['blog list', 'software list']) --}}
                         <li>
                             <button type="button"
                                 class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
@@ -115,7 +115,7 @@
                             </ul>
 
                         </li>
-                    @endcanany
+                    {{-- @endcanany --}}
                     <!------------Blog end------------->
 
                     <!-----------Blog start------------>
@@ -182,7 +182,7 @@
                     <!------------Blog end------------->
 
                     <!------------Category start------->
-                    @canany(['category list'])
+                    {{-- @canany(['category list']) --}}
                         <li>
                             <a href="{{ route('category.index') }}"
                                 class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 ">
@@ -194,7 +194,7 @@
                                 <span class="ml-3" sidebar-toggle-item>Category</span>
                             </a>
                         </li>
-                    @endcanany
+                    {{-- @endcanany --}}
 
                     <!------------Circular start------->
 

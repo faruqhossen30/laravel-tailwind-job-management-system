@@ -9,9 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
-    use HasRoles, HasApiTokens, HasFactory, Notifiable ;
+    use HasRoles, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'thumbnail',
+        'bio',
+        'mobile',
         'thumbnail',
         'name',
         'email',
@@ -47,4 +51,8 @@ class User extends Authenticatable
 
 
 
+    public function cvs()
+    {
+        return $this->hasMany(Cv::class);
+    }
 }

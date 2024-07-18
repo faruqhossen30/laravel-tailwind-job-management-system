@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Bookmark;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class UserController extends Controller
+class BookmakeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::latest()->paginate(10);
-        // return $users;
-        return view('admin.user.index', compact('users'));
+        //
     }
 
     /**
@@ -23,15 +23,22 @@ class UserController extends Controller
      */
     public function create()
     {
-        // return view('admin.user.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function bookmarkStore( $circular_id)
     {
-        //
+
+        $data = [
+            'user_id' => Auth()->user()->id,
+            'circular_id'  => $circular_id
+        ];
+        $bookmark = Bookmark::create($data);
+        Session::flash('create');
+        return redirect()->back();
     }
 
     /**
@@ -39,9 +46,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user=User::where('id',$id)->first();
-        // return $user;
-        return view('admin.user.view',compact('user'));
+        //
     }
 
     /**
@@ -49,7 +54,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-
+        //
     }
 
     /**

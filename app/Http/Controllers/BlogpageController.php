@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BlogpageController extends Controller
 {
@@ -33,7 +34,7 @@ class BlogpageController extends Controller
         })
 
 
-        ->latest()->take(4)->get();
+        ->orderBy('view_count', 'desc')->take(4)->get();
         // return $latestblog;
         return view('pages.blogpage', compact('blogs','categories','latestblog'));
     }
@@ -41,7 +42,15 @@ class BlogpageController extends Controller
     public function singleBlog($slug)
     {
         $blog = Blog::firstWhere('slug', $slug);
-        // return $blog->thumbnail;
+
+
+        $blogkey = 'blog_'. $blog->slug;
+        if(!Session::has($blogkey)){
+            $blog ->increment('view_count');
+            Session::put($blogkey,1);
+
+        }
+        // return $blogkey;
         return view('pages.single-blog',compact('blog'));
     }
 }

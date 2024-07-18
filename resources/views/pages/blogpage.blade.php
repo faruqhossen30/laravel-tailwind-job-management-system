@@ -3,6 +3,11 @@
     if (isset($_GET['blogcategory'])) {
         $queryblogcategory = $_GET['blogcategory'];
     }
+
+    $keyword = null;
+    if (isset($_GET['keyword'])) {
+        $keyword = trim($_GET['keyword']);
+    }
 @endphp
 
 @extends('layouts.app')
@@ -127,10 +132,6 @@
         </div>
     </div>
 
-
-
-
-
     <div class="fixed z-40 flex flex-col gap-3 ltr:left-0 rtl:right-0 top-[330px]">
         <!-- light-dark mode button -->
         <a href="javascript: void(0);" id="ltr-rtl"
@@ -139,9 +140,7 @@
             <span class="ltr:hidden">LTR</span>
             <span class="rtl:hidden">RTL</span>
         </a>
-
     </div>
-
     <div class="fixed transition-all duration-300 ease-linear top-[27.5rem] switcher" id="style-switcher">
         <div class="w-48 p-4 bg-white shadow-md">
             <div>
@@ -169,7 +168,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="mt-5">
                 <h3 class="mb-2 font-semibold text-gray-900 text-16">Light/dark Layout</h3>
                 <div class="flex justify-center mt-2">
@@ -188,7 +186,6 @@
         class="fixed z-40 flex flex-col gap-3 px-4 py-3 font-normal text-white group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 top-96 text-14 ltr:rounded-r rtl:rounded-l">
         <i class="text-xl mdi mdi-cog mdi-spin"></i>
     </a>
-
     <div class="main-content">
         <div class="page-content">
             <!-- Start grid -->
@@ -201,7 +198,7 @@
                                 @foreach ($blogs as $blog)
                                     <div class="col-span-12 lg:col-span-6">
                                         <div class="p-2 transition-all duration-500 bg-white rounded-md shadow-md hover:-translate-y-2 dark:bg-transparent dark:shadow-none">
-                                            <img src="assets/images/blog/img-04.jpg" alt="" class="img-fluid">
+                                            <img src="{{ asset('storage/' . $blog->thumbnail) }}" alt="" class="img-fluid">
                                             <div class="p-5">
                                                 <ul class="flex justify-between mb-3 list-inline">
                                                     <li>
@@ -209,7 +206,7 @@
                                                             {{ Carbon\Carbon::parse($blog->created_at)->format('d M Y') }}</p>
                                                     </li>
                                                     <li>
-                                                        <p class="mb-0 text-gray-500 dark:text-gray-300"><i class="mdi mdi-eye"></i> 432</p>
+                                                        <p class="mb-0 text-gray-500 dark:text-gray-300"><i class="mdi mdi-eye"></i>{{$blog->view_count}}</p>
                                                     </li>
                                                 </ul>
                                                 <a href="{{ route('single.blog.page', $blog->slug) }}" class="primary-link">
@@ -235,8 +232,9 @@
 
                         </div>
                         <div class="col-span-12 lg:col-span-3">
-                            <form action="" class="relative">
-                                <input class="w-full rounded border-gray-100/50 placeholder:text-13 dark:border-zinc-600 dark:bg-transparent" type="search" placeholder="Search...">
+                            <form action="{{route('blog.search')}}" class="relative">
+                                <input class="w-full rounded border-gray-100/50 placeholder:text-13 dark:border-zinc-600 dark:bg-transparent" type="search" name="keyword"
+                                    placeholder="Search...">
                                 <button class="absolute text-gray-500 bg-transparent border-0 ltr:mr-2 rtl:ml-2 top-3 ltr:right-2 rtl:left-2 translate-middle-y" type="submit"><span
                                         class="mdi mdi-magnify text-muted"></span></button>
 
@@ -267,64 +265,19 @@
                                             role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
 
-                                    @foreach ( $latestblog as $blog )
-
-                                    <ul class="my-4">
-                                        <li class="flex  items-center pb-4 mb-4 border-b gap-y-3 md:gap-y-0 border-gray-100/50 dark:border-zinc-600">
-                                            <img src="{{asset('storage/'.$blog->thumbnail)}}" alt="" class="w-[86px] object-fit h-16 rounded">
-                                            <div class="ltr:ml-3 rtl:mr-3 grow">
-                                                <a href="blog-details.html" class="">{{$blog->title}}</a>
-                                                <span class="block text-sm text-gray-500">{{ Carbon\Carbon::parse($blog->created_at)->format('d M Y') }}</span>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    @foreach ($latestblog as $blog)
+                                        <ul class="my-4">
+                                            <li class="flex  items-center pb-4 mb-4 border-b gap-y-3 md:gap-y-0 border-gray-100/50 dark:border-zinc-600">
+                                                <img src="{{ asset('storage/' . $blog->thumbnail) }}" alt="" class="w-[86px] object-fit h-16 rounded">
+                                                <div class="ltr:ml-3 rtl:mr-3 grow">
+                                                    <a href="blog-details.html" class="">{{ $blog->title }}</a>
+                                                    <span class="block text-sm text-gray-500">{{ Carbon\Carbon::parse($blog->created_at)->format('d M Y') }}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     @endforeach
                                 </div>
                             </form>
-                            <div class="mt-8">
-                                <h6 class="mb-2 text-gray-900 text-16 dark:text-gray-50">Archives</h6>
-                                <div class="w-full h-0.5 rounded-full bg-gray-100/60 dark:bg-gray-500/20">
-                                    <div class="group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 w-[25%] h-0.5 ltr:rounded-l-full rtl:rounded-r-full"
-                                        role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <ul class="mt-3 mb-0 text-gray-900 dark:text-gray-50">
-                                    <li class="py-1"><a class="mr-2 text-gray-500 dark:text-gray-300" href="javascript:void(0)"><i class="uil uil-angle-right-b"></i> March
-                                            2021</a> (40)</li>
-                                    <li class="py-1"><a class="mr-2 text-gray-500 dark:text-gray-300" href="javascript:void(0)"><i class="uil uil-angle-right-b"></i> April
-                                            2021</a> (08)</li>
-                                    <li class="py-1"><a class="mr-2 text-gray-500 dark:text-gray-300" href="javascript:void(0)"><i class="uil uil-angle-right-b"></i> Nov 2020</a>
-                                        (32)</li>
-                                    <li class="py-1"><a class="mr-2 text-gray-500 dark:text-gray-300" href="javascript:void(0)"><i class="uil uil-angle-right-b"></i> May 2020</a>
-                                        (11)</li>
-                                    <li class="py-1"><a class="mr-2 text-gray-500 dark:text-gray-300" href="javascript:void(0)"><i class="uil uil-angle-right-b"></i> Jun 2019</a>
-                                        (21)</li>
-                                </ul>
-                            </div>
-
-                            <div class="mt-8">
-                                <h6 class="mb-2 text-gray-900 text-16 dark:text-gray-50">Latest Tags</h6>
-                                <div class="w-full h-0.5 rounded-full bg-gray-100/60 dark:bg-gray-500/20">
-                                    <div class="group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 w-[25%] h-0.5 ltr:rounded-l-full rtl:rounded-r-full"
-                                        role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <div class="flex flex-wrap gap-2 mt-3">
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">Fashion</a>
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">Jobs</a>
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">Business</a>
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">Corporate</a>
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">E-commerce</a>
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">Agency</a>
-                                    <a class="mt-2 text-xs font-medium px-2 py-0.5 text-center bg-gray-50 text-gray-600 rounded group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:text-white transition-all duration-200 ease-in dark:bg-gray-500/20 dark:text-gray-100 dark:hover:bg-violet-500/20 dark:hover:text-white"
-                                        href="javascript:void(0)">Responsive</a>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>

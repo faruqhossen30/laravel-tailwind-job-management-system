@@ -13,7 +13,7 @@ class HomepageController extends Controller
     {
         $jobindustries = JobIndustry::withcount('circulars')->take(8)->get();
         // return $jobindustries;
-        $categories = Category::with('circulars')->get();
+        $categories = Category::where('type','circular')->with('circulars')->get();
         $circulars = Circular::latest()
             ->with( 'company', 'jobindustries.jobindustry', 'skills.skill', 'jobtypes.jobtype')
             ->take(5)->get();

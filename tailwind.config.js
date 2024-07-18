@@ -26,6 +26,7 @@ export default {
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                jost: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'brand': '#FF003A',

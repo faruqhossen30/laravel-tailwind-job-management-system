@@ -1,30 +1,21 @@
+
 @extends('admin.layouts.app')
 @section('breadcrumb')
     <x-breadcrumb pageone="Category" class="py-2" pageoneRoute="{{ route('category.index') }}" pagetwo="Create" />
 @endsection
-
-
-
-
 @section('content')
     <div class="flex flex-col gap-6 ">
         <div class="card">
             <div class="card-header">
                 <div class="p-6">
-                    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+
+                    <form action="{{ route('cv.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-12 gap-5 ">
                             <div class="col-span-12 lg:col-span-8 bg-white dark:bg-gray-800 p-4 rounded-lg">
-                                <x-form.input label="Category Name" name="name" />
+                                <x-form.input label="Title" name="title" />
+                                <x-form.input label="File Name" name="file_name" />
 
-                                <div class="py-2">
-                                    <select id="type" name="type"
-                                        class=" py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                                        <option>Select Category Type</option>
-                                        <option value="circular">circular</option>
-                                        <option value="blog">blog</option>
-                                    </select>
-                                </div>
 
                             </div>
                             <div class="col-span-12 lg:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg">
@@ -32,9 +23,6 @@
                             </div>
 
                         </div>
-
-
-                        {{-- @include('admin.inc.modal.photo-gallery') --}}
                         <x-form.submit-button />
                     </form>
                 </div>

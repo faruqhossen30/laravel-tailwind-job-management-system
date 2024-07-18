@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('meta_keyword',1000)->nullable();
             $table->string('color')->nullable();
             $table->boolean('status')->nullable()->default(0);
+            $table->integer('view_count')->default(0);
             $table->timestamps();
         });
     }

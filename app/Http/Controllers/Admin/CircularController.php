@@ -42,7 +42,7 @@ class CircularController extends Controller
      */
     public function create()
     {
-        $categories    = Category::get();
+        $categories    = Category::where('type','circular')->get();
         $educations    = Education::get();
         $skills        = Skill::get();
         $jobindustries = JobIndustry::orderBy('name', 'asc')->get();
@@ -181,7 +181,7 @@ class CircularController extends Controller
     public function edit(string $id)
     {
         $circular = Circular::with('skills',  'jobindustries', 'careerlabels', 'jobtypes', 'salaryperiods')->firstWhere('id', $id);
-        $categories    = Category::get();
+        $categories    = Category::where('type','circular')->get();
         $educations    = Education::get();
         $skills        = Skill::get();
         $jobindustries = Jobindustry::get();

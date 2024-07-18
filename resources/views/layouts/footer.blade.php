@@ -1,3 +1,7 @@
+@php
+    use App\Models\Setting\WebsiteSetting;
+    $site = WebsiteSetting::first();
+@endphp
 <footer class="footer ">
     <!-- start footer -->
     <section class="py-12 bg-zinc-800 dark:bg-neutral-900">
@@ -15,25 +19,25 @@
                             <ul class="flex gap-3">
                                 <li
                                     class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
-                                    <a href="#">
+                                    <a href="{{$site->facebook_link}}">
                                         <i class="uil uil-facebook-f"></i>
                                     </a>
                                 </li>
                                 <li
                                     class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
-                                    <a href="#">
+                                    <a href="{{$site->linkedin_link}}">
                                         <i class="uil uil-linkedin-alt"></i>
                                     </a>
                                 </li>
                                 <li
                                     class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
-                                    <a href="#">
-                                        <i class="uil uil-google"></i>
+                                    <a href="{{$site->whatsapp_link}}">
+                                        <i class="uil uil-whatsapp"></i>
                                     </a>
                                 </li>
                                 <li
                                     class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
-                                    <a href="#">
+                                    <a href="{{$site->x_link}}">
                                         <i class="uil uil-twitter"></i>
                                     </a>
                                 </li>

@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Setting\WebsiteSettingController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\User\UserDashboardController;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('role', RoleController::class);
@@ -64,3 +65,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     });
 });
+
