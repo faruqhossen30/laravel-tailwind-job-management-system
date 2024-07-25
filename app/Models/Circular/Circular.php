@@ -28,7 +28,7 @@ class Circular extends Model
         'apply_link',
         'vacancy',
         'min_salary',
-        'max_salary'
+        'max_salary',
     ];
     protected $dates = ['start_date', 'end_date'];
 

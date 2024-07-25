@@ -98,14 +98,14 @@
 
                                             Upload CV
                                         </a>
-                                        <a href="{{ route('cv.list') }}"
+                                        <button type="button"
                                             class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                                             <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M7.75 4H19M7.75 4a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 4h2.25m13.5 6H19m-2.25 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 10h11.25m-4.5 6H19M7.75 16a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 16h2.25" />
                                             </svg>
                                             Cv list
-                                        </a>
+                                        </button>
                                         <button type="button"
                                             class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                                             <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="currentColor">
@@ -139,35 +139,16 @@
                                                 <div class="col-span-12">
                                                     <div class="mt-10 rounded bg-gray-50 dark:bg-neutral-700">
                                                         <div class="p-6">
-                                                            <div class="pt-8 space-x-8">
-                                                                <form action="{{ route('cv.store') }}" method="POST" enctype='multipart/form-data'>
-                                                                    @csrf
-
-                                                                    <div>
-                                                                        <h5 class="mb-3 text-gray-900 fs-17 fw-semibold dark:text-gray-50">Upload Your Cv</h5>
-
-                                                                        <div class="mt-5">
-                                                                            <div class="grid grid-cols-12 gap-5">
-                                                                                <div class="col-span-12 lg:col-span-12">
-
-                                                                                    <div class="col-span-12 lg:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg">
-                                                                                        <input class="dropify" type="file" id="myDropify" name="file">
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end row-->
-                                                                    </div>
-                                                                    <!--end account-->
-
-                                                                    <!--end Change-password-->
-                                                                    <div class="mt-8 text-right">
-                                                                        <button href="javascript:void(0)" type="submit"
-                                                                            class="text-white btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 border-transparent focus:ring group-data-[theme-color=violet]:focus:ring-violet-500/20 group-data-[theme-color=sky]:focus:ring-sky-500/20 group-data-[theme-color=red]:focus:ring-red-500/20 group-data-[theme-color=green]:focus:ring-green-500/20 group-data-[theme-color=pink]:focus:ring-pink-500/20 group-data-[theme-color=blue]:focus:ring-blue-500/20">Update</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
+                                                            <ul class="space-y-4">
+                                                                @foreach ($user->cvs as $key => $item)
+                                                                    <li class="px-4 py-2 bg-white rounded dark:bg-neutral-600">
+                                                                        {{ $key + 1 }} .
+                                                                        <a href="{{asset('storage/'.$item->file)}}" target="_blank"  class="text-gray-900 dark:text-white">{{ $item->title }}<span download=""
+                                                                                class="px-2 py-1 rounded bg-sky-500/20 text-11 text-sky-500 ltr:float-right rtl:float-left"><i
+                                                                                    class="uil uil-import"></i></span></a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>

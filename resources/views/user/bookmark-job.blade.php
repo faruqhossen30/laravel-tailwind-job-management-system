@@ -98,287 +98,92 @@
                     </div>
                     <div class="mt-8">
                         <div class="grid grid-cols-1 gap-y-5">
-                            <div
-                                class="p-5 border border-gray-100/50 rounded-md relative hover:-translate-y-1.5 transition-all duration-500 ease-in-out group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:shadow-md hover:shadow-gray-100/30 dark:border-neutral-600 dark:hover:shadow-neutral-900">
-                                <div class="grid grid-cols-12">
-                                    <div class="col-span-12 lg:col-span-1">
-                                        <a href="company-details.html"><img src="assets/images/featured-job/img-01.png" alt="" class="img-fluid rounded-3"></a>
-                                    </div><!--end col-->
-                                    <div class="col-span-12 lg:col-span-9">
-                                        <div class="mt-4 lg:mt-0">
-                                            <h5 class="mb-1 text-17"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">Business Associate</a></h5>
-                                            <ul class="flex gap-3 mb-0">
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Jobcy Technology Pvt.Ltd</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                </li>
-                                            </ul>
-                                            <div class="flex flex-wrap gap-2 mt-3">
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-red-500 rounded bg-red-500/20 text-13">Part Time</span>
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-yellow-500 rounded bg-yellow-500/20 text-13">Urgent</span>
+                            @foreach ($bookmarkjob as $job)
+                                <div
+                                    class="relative mt-4 overflow-hidden transition-all duration-500 ease-in-out bg-white border rounded-md border-gray-100/50 group/job group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:-translate-y-2 dark:bg-neutral-900 dark:border-neutral-600">
+                                    <div
+                                        class="w-48 absolute -top-[5px] -left-20 -rotate-45 group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 group-data-[theme-color=violet]:group-hover/job:bg-violet-500 group-data-[theme-color=sky]:group-hover/job:bg-sky-500 group-data-[theme-color=red]:group-hover/job:bg-red-500 group-data-[theme-color=green]:group-hover/job:bg-green-500 group-data-[theme-color=pink]:group-hover/job:bg-pink-500 group-data-[theme-color=blue]:group-hover/job:bg-blue-500 transition-all duration-500 ease-in-out p-[6px] text-center dark:bg-violet-500/20">
+                                        <a href="" class="text-2xl text-white align-middle"><i class="mdi mdi-star"></i></a>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="grid items-center grid-cols-12">
+                                            <div class="col-span-12 lg:col-span-2">
+                                                <div class="mb-4 text-center mb-md-0">
+                                                    <a href="company-details.html"><img src="assets/images/featured-job/img-01.png" alt=""
+                                                            class="mx-auto img-fluid rounded-3"></a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="items-center col-span-12 lg:col-span-2 ">
-                                        <ul class="flex flex-wrap gap-3 mt-4 lg:mt-0">
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-green-500 rounded-full bg-green-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit">
-                                                <a href="manage-jobs-post.html" class="text-center avatar-sm success-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-edit"></i>
-                                                </a>
-                                            </li>
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-red-500 rounded-full bg-red-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    class="text-center avatar-sm danger-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-trash-alt"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
+                                            <!--end col-->
+                                            <div class="col-span-12 lg:col-span-3">
+                                                <div class="mb-2 mb-md-0">
+                                                    <h5 class="mb-1 fs-18"><a href="" class="text-gray-900 dark:text-gray-50">{{ $job->circular->title }}</a>
+                                                    </h5>
+                                                    {{-- @if ($circular->organization_name) --}}
+                                                    <p class="mb-0 text-gray-500 fs-14 dark:text-gray-300">{{ $job->circular->organization_name }}</p>
+                                                    {{-- @elseif($circular->company_id) --}}
+                                                    <p class="mb-0 text-gray-500 fs-14 dark:text-gray-300"></p>
+                                                    {{-- @endif --}}
+                                                </div>
+                                            </div>
+                                            <!--end col-->
 
-                            <div
-                                class="p-5 border border-gray-100/50 rounded-md relative hover:-translate-y-1.5 transition-all duration-500 ease-in-out group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:shadow-md hover:shadow-gray-100/30 dark:border-neutral-600 dark:hover:shadow-neutral-900">
-                                <div class="grid grid-cols-12">
-                                    <div class="col-span-12 lg:col-span-1">
-                                        <a href="company-details.html"><img src="assets/images/featured-job/img-02.png" alt="" class="img-fluid rounded-3"></a>
-                                    </div><!--end col-->
-                                    <div class="col-span-12 lg:col-span-9">
-                                        <div class="mt-4 lg:mt-0">
-                                            <h5 class="mb-1 text-17"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">Marketing Director</a> <small
-                                                    class="font-normal text-gray-500">(2-4 Yrs Exp.)</small></h5>
-                                            <ul class="flex gap-3 mb-0">
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Creative Agency</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> New York</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                </li>
-                                            </ul>
-                                            <div class="flex flex-wrap gap-2 mt-3">
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-red-500 rounded bg-red-500/20 text-13">Part Time</span>
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-sky-500 rounded bg-sky-500/20 text-13">Private</span>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="items-center col-span-12 lg:col-span-2">
-                                        <ul class="flex flex-wrap gap-3 mt-4 lg:mt-0">
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-green-500 rounded-full bg-green-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit">
-                                                <a href="manage-jobs-post.html" class="text-center avatar-sm success-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-edit"></i>
-                                                </a>
-                                            </li>
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-red-500 rounded-full bg-red-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    class="text-center avatar-sm danger-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-trash-alt"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
+                                            <div class="col-span-12 lg:col-span-2">
+                                                <div>
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-300"><span
+                                                            class="group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500">৳</span>
 
-                            <div
-                                class="p-5 border border-gray-100/50 rounded-md relative hover:-translate-y-1.5 transition-all duration-500 ease-in-out group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:shadow-md hover:shadow-gray-100/30 dark:border-neutral-600 dark:hover:shadow-neutral-900">
-                                <div class="grid grid-cols-12">
-                                    <div class="col-span-12 lg:col-span-1">
-                                        <a href="company-details.html"><img src="assets/images/featured-job/img-03.png" alt="" class="img-fluid rounded-3"></a>
-                                    </div><!--end col-->
-                                    <div class="col-span-12 lg:col-span-9">
-                                        <div class="mt-4 lg:mt-0">
-                                            <h5 class="mb-1 text-17"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">HTML Developer</a> <small
-                                                    class="font-normal text-gray-500">(2-4 Yrs Exp.)</small></h5>
-                                            <ul class="flex gap-3 mb-0">
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Jobcy Technology Pvt.Ltd</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                </li>
-                                            </ul>
-                                            <div class="flex flex-wrap gap-2 mt-3">
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-violet-500 rounded bg-violet-500/20 text-13">Freelance</span>
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-violet-500 rounded bg-violet-500/20 text-13">Freelance</span>
+                                                        {{ $job->circular->min_salary }} - {{ $job->circular->max_salary }} / month
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="items-center col-span-12 lg:col-span-2">
-                                        <ul class="flex flex-wrap gap-3 mt-4 lg:mt-0">
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-green-500 rounded-full bg-green-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit">
-                                                <a href="manage-jobs-post.html" class="text-center avatar-sm success-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-edit"></i>
-                                                </a>
-                                            </li>
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-red-500 rounded-full bg-red-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    class="text-center avatar-sm danger-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-trash-alt"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
+                                            <!--end col-->
+                                            <div class="col-span-12 lg:col-span-2">
+                                                <div>
+                                                    <p class="mb-0 text-gray-500 dark:text-gray-300"> <i
+                                                            class="mr-1 uil uil-clock-three group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"></i>
+                                                        {{ Carbon\Carbon::parse($job->circular->created_at)->format('d M Y') }}</p>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-span-12 lg:col-span-2">
+                                                <div class="flex flex-wrap gap-1.5">
+                                                    @foreach ($job->circular->jobtypes as $item)
+                                                        <a href="javascript:void(0)" class="primary-link text-muted">{{$item->jobtype->name ?? ''}}</a>
+                                                    @endforeach
 
-                            <div
-                                class="p-5 border border-gray-100/50 rounded-md relative hover:-translate-y-1.5 transition-all duration-500 ease-in-out group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:shadow-md hover:shadow-gray-100/30 dark:border-neutral-600 dark:hover:shadow-neutral-900">
-                                <div class="grid grid-cols-12">
-                                    <div class="col-span-12 lg:col-span-1">
-                                        <a href="company-details.html"><img src="assets/images/featured-job/img-04.png" alt="" class="img-fluid rounded-3"></a>
-                                    </div><!--end col-->
-                                    <div class="col-span-12 lg:col-span-9">
-                                        <div class="mt-4 lg:mt-0">
-                                            <h5 class="mb-1 text-17"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">HTML Developer</a> <small
-                                                    class="font-normal text-gray-500">(5+ Yrs Exp.)</small></h5>
-                                            <ul class="flex gap-3 mb-0">
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Jobcy Technology Pvt.Ltd</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                </li>
-                                            </ul>
-                                            <div class="flex flex-wrap gap-2 mt-3">
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-green-500 rounded bg-green-500/20 text-13">Full Time</span>
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-sky-500 rounded bg-sky-500/20 text-13">Private</span>
+                                                    {{-- <span class=" text-green-500 text-13 px-2 py-0.5 font-medium rounded">{{ $circular->jobtypes[0]->circular_id ?? '' }}</span> --}}
+                                                </div>
                                             </div>
+                                            <!--end col-->
                                         </div>
-                                    </div><!--end col-->
-                                    <div class="items-center col-span-12 lg:col-span-2">
-                                        <ul class="flex flex-wrap gap-3 mt-4 lg:mt-0">
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-green-500 rounded-full bg-green-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit">
-                                                <a href="manage-jobs-post.html" class="text-center avatar-sm success-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-edit"></i>
-                                                </a>
-                                            </li>
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-red-500 rounded-full bg-red-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    class="text-center avatar-sm danger-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-trash-alt"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
-
-                            <div
-                                class="p-5 border border-gray-100/50 rounded-md relative hover:-translate-y-1.5 transition-all duration-500 ease-in-out group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:shadow-md hover:shadow-gray-100/30 dark:border-neutral-600 dark:hover:shadow-neutral-900">
-                                <div class="grid grid-cols-12">
-                                    <div class="col-span-12 lg:col-span-1">
-                                        <a href="company-details.html"><img src="assets/images/featured-job/img-05.png" alt="" class="img-fluid rounded-3"></a>
-                                    </div><!--end col-->
-                                    <div class="col-span-12 lg:col-span-9">
-                                        <div class="mt-4 lg:mt-0">
-                                            <h5 class="mb-1 text-17"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">Product Designer </a> <small
-                                                    class="font-normal text-gray-500">(0-5 Yrs Exp.)</small></h5>
-                                            <ul class="flex gap-3 mb-0">
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Creative Agency </p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                </li>
-                                            </ul>
-                                            <div class="flex flex-wrap gap-2 mt-3">
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-blue-500 rounded bg-blue-500/20 text-13">Internship</span>
+                                        <!--end row-->
+                                    </div>
+                                    <div class="px-4 py-3 bg-gray-50 dark:bg-neutral-700">
+                                        <div class="grid grid-cols-12">
+                                            <div class="col-span-12 lg:col-span-6">
+                                                <div>
+                                                    <p class="mb-0 text-gray-500 dark:text-gray-300"><span class="text-gray-900 dark:text-gray-50">Job Industry :</span>
+                                                        @foreach ($job->circular->jobindustries as $item)
+                                                    <a href="javascript:void(0)" class="primary-link text-muted">{{ $item->jobindustry->name ?? ''}}</a>,
+                                                @endforeach
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="items-center col-span-12 lg:col-span-2">
-                                        <ul class="flex flex-wrap gap-3 mt-4 lg:mt-0">
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-green-500 rounded-full bg-green-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit">
-                                                <a href="manage-jobs-post.html" class="text-center avatar-sm success-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-edit"></i>
-                                                </a>
-                                            </li>
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-red-500 rounded-full bg-red-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    class="text-center avatar-sm danger-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-trash-alt"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
-
-                            <div
-                                class="p-5 border border-gray-100/50 rounded-md relative hover:-translate-y-1.5 transition-all duration-500 ease-in-out group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:shadow-md hover:shadow-gray-100/30 dark:border-neutral-600 dark:hover:shadow-neutral-900">
-                                <div class="grid grid-cols-12">
-                                    <div class="col-span-12 lg:col-span-1">
-                                        <a href="company-details.html"><img src="assets/images/featured-job/img-06.png" alt="" class="img-fluid rounded-3"></a>
-                                    </div><!--end col-->
-                                    <div class="col-span-12 lg:col-span-9">
-                                        <div class="mt-4 lg:mt-0">
-                                            <h5 class="mb-1 text-17"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">Project Manager </a> <small
-                                                    class="font-normal text-gray-500">(0-2 Yrs Exp.)</small></h5>
-                                            <ul class="flex gap-3 mb-0">
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Jobcy Technology Pvt.Ltd </p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                </li>
-                                                <li class="">
-                                                    <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                </li>
-                                            </ul>
-                                            <div class="flex flex-wrap gap-2 mt-3">
-                                                <span class="px-2 py-0.5 mt-1 font-medium text-blue-500 rounded bg-blue-500/20 text-13">Internship</span>
+                                            <!--end col-->
+                                            <div class="col-span-12 mt-2 lg:col-span-6 lg:mt-0">
+                                                <div class="ltr:lg:text-right rtl:lg:text-left dark:text-gray-50">
+                                                    <a href="#applyNow" data-bs-toggle="modal">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                </div>
                                             </div>
+                                            <!--end col-->
                                         </div>
-                                    </div><!--end col-->
-                                    <div class="items-center col-span-12 lg:col-span-2">
-                                        <ul class="flex flex-wrap gap-3 mt-4 lg:mt-0">
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-green-500 rounded-full bg-green-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Edit" data-bs-original-title="Edit">
-                                                <a href="manage-jobs-post.html" class="text-center avatar-sm success-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-edit"></i>
-                                                </a>
-                                            </li>
-                                            <li class="w-10 h-10 text-lg leading-10 text-center text-red-500 rounded-full bg-red-500/20" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    class="text-center avatar-sm danger-bg-subtle d-inline-block rounded-circle fs-18">
-                                                    <i class="uil uil-trash-alt"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
+                                        <!--end row-->
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="grid grid-cols-12">
+                    {{-- <div class="grid grid-cols-12">
                         <div class="col-span-12">
                             <ul class="flex justify-center gap-2 mt-8">
                                 <li class="w-12 h-12 text-center border rounded-full cursor-default border-gray-100/50 dark:border-gray-100/20">
@@ -411,6 +216,9 @@
                             </ul>
                         </div>
                         <!--end col-->
+                    </div> --}}
+                    <div class="">
+                        {{ $bookmarkjob->appends($_GET)->links('pagination::some') }}
                     </div>
                 </div>
             </section>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attributes\JobTypes;
+use App\Models\Bookmark;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class UserDashboardController extends Controller
@@ -12,7 +15,7 @@ class UserDashboardController extends Controller
     public function userProfile($id)
     {
         $user = User::where('id', $id)->first();
-        return view('user.dashboard',compact('user'));
+        return view('user.dashboard', compact('user'));
     }
     public function userProfileupdate(Request $request, string $id)
     {
@@ -36,13 +39,15 @@ class UserDashboardController extends Controller
     public function managJob()
     {
 
-     return   view('user.manage-job');
+        return   view('user.manage-job');
     }
 
-    public function bookmarkJob() {
+    public function bookmarkJob()
+    {
 
+        $bookmarkjob =  Bookmark::with('circular.jobtypes.jobtype','circular.jobindustries.jobindustry')->where('circular_id', Auth()->user()->id)->latest()->paginate(5);
+        // return   $bookmarkjob;
 
-        return view('user.bookmark-job');
-
+        return view('user.bookmark-job', compact('bookmarkjob'));
     }
 }

@@ -18,7 +18,7 @@ class CvController extends Controller
         $user = Auth::user();
 
         // return $user->cvs;
-        return view('user.cvupload',compact('cvlist'));
+        return view('user.cvlist',compact('cvlist'));
     }
 
     public function  create()
@@ -42,6 +42,7 @@ class CvController extends Controller
             $data = [
             'title'     =>  $fileName,
             'size'      => $fileSize,
+            'user_id'      => Auth()->user()->id
         ];
         if ($request->file('file')) {
             $file = $request->file('file')->store('file/file');

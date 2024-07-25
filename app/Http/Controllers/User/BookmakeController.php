@@ -15,7 +15,7 @@ class BookmakeController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

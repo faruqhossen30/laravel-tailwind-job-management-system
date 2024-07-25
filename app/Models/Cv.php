@@ -12,5 +12,6 @@ class Cv extends Model
         'title',
         'size',
         'file',
+        'user_id',
     ];
 }
